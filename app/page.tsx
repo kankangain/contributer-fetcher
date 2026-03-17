@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 
 export default function Home() {
-  const [repoPath, setRepoPath] = useState('elysiajs/elysia');
+  const [repoPath, setRepoPath] = useState('username/repo');
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 

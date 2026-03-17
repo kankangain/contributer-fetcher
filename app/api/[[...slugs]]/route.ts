@@ -78,8 +78,8 @@ const app = new Elysia({ prefix: "/api" }).get(
         .png()
         .toBuffer();
 
-      // 6. Return Response
-      return new Response(finalImage, {
+      // 6. Return Response (Fixed for TypeScript / Web Standards)
+      return new Response(new Uint8Array(finalImage), {
         headers: {
           "Content-Type": "image/png",
           "Cache-Control": "public, max-age=3600",
