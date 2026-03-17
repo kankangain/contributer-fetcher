@@ -1,38 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHub Contributor Grid Generator
 
-[![Contributors](https://localhost:3000/api/contributors/kankangain/ayulinker)](https://github.com/kankangain/ayulinker)
+A high-performance, full-stack web application that dynamically generates circular avatar grids of GitHub contributors. Built with an integrated microservice architecture, it fetches real-time repository data and composites a clean PNG image on the fly.
 
-## Getting Started
+## ✨ Features
 
-First, run the development server:
+- **Dynamic Image Generation:** Converts standard GitHub API JSON into a perfectly measured, transparent PNG grid.
+- **Circular Masks:** Automatically crops GitHub avatars into perfect circles using SVG masking.
+- **Unified Architecture:** Uses ElysiaJS directly inside Next.js App Router for zero-latency, cross-origin-free API handling.
+- **Auto-Scaling Grid:** Dynamically calculates image dimensions based on the exact number of contributors.
+- **Instant Markdown:** Generates a ready-to-use markdown snippet to drop directly into your GitHub repository `README.md`.
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Runtime & Package Manager:** Bun
+- **Backend API:** ElysiaJS (Integrated via Next.js Web Standards)
+- **Image Processing:** Sharp (High-performance Node.js C++ image compositing)
+- **Styling:** Tailwind CSS + Shadcn UI
+- **Language:** TypeScript
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have [Bun](https://bun.sh/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    git clone https://github.com/kankangain/contributer-fetcher.git
+    cd contributer-fetcher
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    bun install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4.  Set up environment variables:
+    Create a `.env` file in the root directory and add a GitHub Personal Access Token to bypass unauthenticated rate limits.
 
-## Learn More
+```env
+    GITHUB_TOKEN=your_github_pat_here
+```
 
-To learn more about Next.js, take a look at the following resources:
+5.  Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+    bun run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6.  Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+## 🔌 API Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You don't have to use the frontend UI. You can hit the API directly to generate images for your markdown files:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```http
+GET /api/contributors/:owner/:repo
+```
+
+## **Example Markdown Embed:**
+
+### NextJS Contributors:
+
+[![Contributors](https://contrib.oxxyhosting.com/api/contributors/vercel/next.js)](https://github.com/vercel/next.js.git)
+
+## 🐳 Deployment Notes
+
+This project is optimized for deployment via **Dokploy** (using Nixpacks) or standard Docker Swarm.
+
+Because we use `sharp` for image generation, the build environment requires Node.js standard libraries. The frontend and backend are unified, so you only need to expose a single web port (default `3000`).
+
+**Required Build Commands for Nixpacks/Dokploy:**
+
+- **Install:** `bun install --no-save`
+- **Build:** `bun run build`
+- **Start:** `bun run start`
+
+---
+
+_Developed by [Kankan Gain](https://www.google.com/search?q=https://github.com/kankangain)_
