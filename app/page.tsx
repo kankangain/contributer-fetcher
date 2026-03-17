@@ -71,7 +71,7 @@ export default function Home() {
 
               <div className="w-full mt-4 p-4 bg-black border border-zinc-800 rounded-md overflow-x-auto">
                 <code className="text-xs text-emerald-400 whitespace-nowrap">
-                  [![Contributors](https://contrib.oxxyhosting.com{imageUrl.split('?')[0]})](https://github.com/{repoPath})
+                  [![Contributors](https://contrib.oxxyhosting.com{imageUrl.split('?')[0]})](https://github.com/{repoPath}/graphs/contributors)
                 </code>
               </div>
             </div>
