@@ -1,5 +1,6 @@
 'use client';
 
+import Chai4Me from '@/components/chai4me';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -78,6 +79,9 @@ export default function Home() {
           )}
         </CardContent>
       </Card>
+      <div className="mt-8">
+        <Chai4Me />
+      </div>
     </main>
   );
 }
